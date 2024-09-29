@@ -4,7 +4,7 @@ import { Like } from "../models/like.model.js";
 import { Follow } from "../models/follow.model.js";
 import { Comment } from "../models/comment.model.js";
 import bcrypt from "bcrypt";
-import { cookieOptions } from "../constants.js";
+
 import mongoose from "mongoose";
 import { uploadOnCloudinary } from "../utils/uploadOnCloudinary.js";
 import { deleteFromCloudinary } from "../utils/deleteFromCloudinary.js";
