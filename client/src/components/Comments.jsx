@@ -35,7 +35,7 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
     if (text.trim()) {
       try {
         const res = await axios.post(
-          `http://localhost:8000/api/v1/comments/${postId}/add`,
+          `https://socialloop-server.onrender.com//api/v1/comments/${postId}/add`,
           { comment: text },
           {
             headers: {
@@ -78,7 +78,7 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
   const deleteCommentHandler = async (commentId, postId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/v1/comments/${commentId}/delete`,
+        `https://socialloop-server.onrender.com//api/v1/comments/${commentId}/delete`,
         {
           withCredentials: true,
         }
@@ -232,7 +232,9 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <p className="whitespace-normal break-all">{comment.comment}</p>
+                    <p className="whitespace-normal break-all">
+                      {comment.comment}
+                    </p>
                     {comment?.user_id === user?.userProfile._id && (
                       <Button
                         onClick={() =>

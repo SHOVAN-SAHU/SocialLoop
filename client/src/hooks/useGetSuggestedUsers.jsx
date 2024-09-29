@@ -9,7 +9,7 @@ const useGetSuggestedUsers = () => {
     const fetchSuggestedUsers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/v1/users/suggested-users",
+          "https://socialloop-server.onrender.com//api/v1/users/suggested-users",
           { withCredentials: true }
         );
         if (res.data.success) {

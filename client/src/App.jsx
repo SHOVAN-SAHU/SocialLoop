@@ -76,12 +76,15 @@ function App() {
   useEffect(() => {
     if (user) {
       (async () => {
-        const users = await axios.get("http://localhost:8000/api/v1/users/su", {
-          withCredentials: true,
-        });
+        const users = await axios.get(
+          "https://socialloop-server.onrender.com//api/v1/users/su",
+          {
+            withCredentials: true,
+          }
+        );
         console.log(users);
       })();
-      const socketio = io("http://localhost:8000", {
+      const socketio = io("https://socialloop-server.onrender.com/", {
         query: {
           userId: user?.userProfile._id,
         },
