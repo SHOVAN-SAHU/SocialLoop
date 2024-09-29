@@ -12,6 +12,7 @@ import { deleteFromCloudinary } from "../utils/deleteFromCloudinary.js";
 export const cookieOptions = {
   httpOnly: true,
   secure: true,
+  sameSite: "strict"
 };
 
 const registerUser = async (req, res) => {
