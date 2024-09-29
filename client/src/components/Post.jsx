@@ -39,7 +39,7 @@ const Post = ({ post }) => {
     setLoading(true);
     try {
       const res = await axios.delete(
-        `https://socialloop-server.onrender.com//api/v1/posts/${postId}/delete`,
+        `https://socialloop-server.onrender.com/api/v1/posts/${postId}/delete`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -58,7 +58,7 @@ const Post = ({ post }) => {
   const likeOrUnlikeHandler = async (postId) => {
     try {
       const res = await axios.get(
-        `https://socialloop-server.onrender.com//api/v1/likes/${postId}/like-unlike`,
+        `https://socialloop-server.onrender.com/api/v1/likes/${postId}/like-unlike`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -91,7 +91,7 @@ const Post = ({ post }) => {
   const commentHandler = async (postId) => {
     try {
       const res = await axios.post(
-        `https://socialloop-server.onrender.com//api/v1/comments/${postId}/add`,
+        `https://socialloop-server.onrender.com/api/v1/comments/${postId}/add`,
         { comment: text },
         {
           headers: {
@@ -131,7 +131,7 @@ const Post = ({ post }) => {
   const handleSavePost = async (postId) => {
     try {
       const res = await axios.get(
-        `https://socialloop-server.onrender.com//api/v1/posts/${postId}/save`,
+        `https://socialloop-server.onrender.com/api/v1/posts/${postId}/save`,
         { withCredentials: true }
       );
 

@@ -9,7 +9,7 @@ const useGetRandomPosts = () => {
     const fetchRendomPost = async () => {
       try {
         const res = await axios.get(
-          "https://socialloop-server.onrender.com//api/v1/posts/random",
+          "https://socialloop-server.onrender.com/api/v1/posts/random",
           { withCredentials: true }
         );
         if (res.data.success) {

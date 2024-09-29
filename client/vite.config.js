@@ -7,7 +7,7 @@ export default defineConfig({
   // server: {
   //   proxi: {
   //     "/api/": {
-  //       target: "https://socialloop-server.onrender.com//api/v1/",
+  //       target: "https://socialloop-server.onrender.com/api/v1/",
   //       changeOrigin: true,
   //       secure: false,
   //     },

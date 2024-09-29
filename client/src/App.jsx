@@ -77,7 +77,7 @@ function App() {
     if (user) {
       (async () => {
         const users = await axios.get(
-          "https://socialloop-server.onrender.com//api/v1/users/su",
+          "https://socialloop-server.onrender.com/api/v1/users/su",
           {
             withCredentials: true,
           }

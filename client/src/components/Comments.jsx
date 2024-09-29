@@ -35,7 +35,7 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
     if (text.trim()) {
       try {
         const res = await axios.post(
-          `https://socialloop-server.onrender.com//api/v1/comments/${postId}/add`,
+          `https://socialloop-server.onrender.com/api/v1/comments/${postId}/add`,
           { comment: text },
           {
             headers: {
@@ -78,7 +78,7 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
   const deleteCommentHandler = async (commentId, postId) => {
     try {
       const res = await axios.delete(
-        `https://socialloop-server.onrender.com//api/v1/comments/${commentId}/delete`,
+        `https://socialloop-server.onrender.com/api/v1/comments/${commentId}/delete`,
         {
           withCredentials: true,
         }

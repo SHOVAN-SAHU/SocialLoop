@@ -84,7 +84,7 @@ const LeftSidebar = () => {
   const logoutHandler = async () => {
     try {
       const res = await axios.get(
-        "https://socialloop-server.onrender.com//api/v1/users/logout",
+        "https://socialloop-server.onrender.com/api/v1/users/logout",
         {
           withCredentials: true,
         }
