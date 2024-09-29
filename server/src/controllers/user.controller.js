@@ -9,6 +9,11 @@ import mongoose from "mongoose";
 import { uploadOnCloudinary } from "../utils/uploadOnCloudinary.js";
 import { deleteFromCloudinary } from "../utils/deleteFromCloudinary.js";
 
+export const cookieOptions = {
+  httpOnly: true,
+  secure: true,
+};
+
 const registerUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
