@@ -25,7 +25,7 @@ const Likes = ({ likesOpen, setLikesOpen, likes }) => {
                 className="flex w-full justify-center items-center gap-2 hover:bg-gray-100"
                 key={like?._id}
               >
-                <Avatar className="h-7 w-7  cursor-pointer">
+                <Avatar className="h-7 w-7 cursor-pointer">
                   <AvatarImage src={like?.profileImage} alt="profile image" />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>

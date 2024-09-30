@@ -17,10 +17,10 @@ export const Followers = ({ isOpen, setOpen }) => {
             {userProfile.userProfile.followers.map((user) => (
               <Link
                 to={`/profile/${user?._id}`}
-                className="flex justify-center items-center"
+                className="flex justify-center items-center gap-3"
                 onClick={() => setOpen(!isOpen)}
               >
-                <Avatar className="h-7 w-7  cursor-pointer">
+                <Avatar className="h-7 w-7 cursor-pointer">
                   <AvatarImage src={user?.profileImage} alt="profile image" />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>

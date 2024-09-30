@@ -14,7 +14,7 @@ export const Following = ({ isOpen, setOpen }) => {
             {userProfile.userProfile.following.map((user) => (
               <Link
                 to={`/profile/${user?._id}`}
-                className="flex justify-center items-center"
+                className="flex justify-center items-center gap-3"
                 onClick={() => setOpen(!isOpen)}
               >
                 <Avatar className="h-7 w-7  cursor-pointer">
