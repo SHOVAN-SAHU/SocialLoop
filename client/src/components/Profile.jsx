@@ -110,7 +110,7 @@ const Profile = () => {
     <div className="h-screen w-screen flex justify-center items-center">
       <Loader2 className="animate-spin h-10 w-10" />
     </div>
-  ) : (
+  ) : (userProfile?.userProfile &&
     <div className="flex max-w-4xl justify-center mx-auto sm:pl-10 mt-20 sm:mt-5">
       <div className="flex flex-col gap-3 p-8">
         <div className="flex flex-col sm:flex-row justify-center items-center sm:gap-4  pb-10">
