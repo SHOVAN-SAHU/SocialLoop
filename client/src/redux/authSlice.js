@@ -4,7 +4,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
-    userProfile: null,
+    userProfile: {},
     selectedUser: null,
   },
   reducers: {
