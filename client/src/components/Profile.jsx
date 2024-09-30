@@ -16,6 +16,7 @@ import { Following } from "./Following";
 
 const Profile = () => {
   const params = useParams();
+  console.log(params._id)
   useGetUserProfile(params._id);
   const naviagte = useNavigate();
   const { user, userProfile } = useSelector((store) => store.auth);
