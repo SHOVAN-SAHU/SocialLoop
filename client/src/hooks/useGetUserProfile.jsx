@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 const useGetUserProfile = (userId) => {
-  console.log("from hooks", userId);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setProfileRendering(true));

@@ -16,7 +16,6 @@ import { Following } from "./Following";
 
 const Profile = () => {
   const params = useParams();
-  console.log(params._id)
   useGetUserProfile(params._id);
   const naviagte = useNavigate();
   const { user, userProfile } = useSelector((store) => store.auth);
@@ -95,7 +94,7 @@ const Profile = () => {
           setUserProfile({
             ...userProfile,
             userProfile: {
-              ...userProfile.userProfile,
+              ...userProfile?.userProfile,
               followers: updatedUserFollowers,
               isFollowing: !userProfile?.userProfile.isFollowing,
             },
@@ -213,7 +212,7 @@ const Profile = () => {
                         <span>{post.comments.length}</span>
                       </button>
                       {user?.userProfile._id ===
-                        userProfile?.userProfile._id && (
+                        userProfile?.userProfile?._id && (
                         <MdDelete
                           className="h-6 w-6  hover:text-gray-300"
                           onClick={() => deletePost(post?._id)}
