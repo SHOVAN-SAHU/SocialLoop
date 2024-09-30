@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://social-loop.vercel.app/",
+    origin: "https://socialloop-by-shovan.onrender.com",
     methods: ["GET", "POST"],
   },
 });
