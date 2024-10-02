@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { LuDot } from "react-icons/lu";
 import Comments from "./Comments";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Likes from "./Likes";
 import { toast } from "sonner";
 import axios from "axios";
@@ -24,6 +24,7 @@ const Post = ({ post }) => {
   const [likesOpen, setLikesOpen] = useState(false);
   const { user } = useSelector((store) => store.auth);
   const { posts } = useSelector((store) => store.post);
+  const navigate = useNavigate();
 
   const changeEventHandler = (e) => {
     const inputText = e.target.value;
@@ -49,7 +50,9 @@ const Post = ({ post }) => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
-      console.log(error);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     } finally {
       setLoading(false);
     }
@@ -85,6 +88,9 @@ const Post = ({ post }) => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     }
   };
 
@@ -125,6 +131,9 @@ const Post = ({ post }) => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     }
   };
 
@@ -140,6 +149,9 @@ const Post = ({ post }) => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     }
   };
 

@@ -85,8 +85,14 @@ const Navbar = () => {
         toast.success(res.data.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+        dispatch(setAuthUser(null));
+        dispatch(setUserProfile(null));
+        dispatch(setOnlineUsers([]));
+        dispatch(setMessages([]));
+      }
     }
   };
 

@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
@@ -20,6 +20,7 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
   const [text, setText] = useState("");
   const { user } = useSelector((store) => store.auth);
   const { posts } = useSelector((store) => store.post);
+  const navigate = useNavigate();
 
   const changeEventHandler = (e) => {
     const inputText = e.target.value;
@@ -69,6 +70,9 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
         }
       } catch (error) {
         toast.error(error.response.data.message);
+        if (error.response.data.unauthorized) {
+          navigate("/login");
+        }
       }
     } else {
       toast.error("Type some comment to send");
@@ -100,6 +104,9 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     }
   };
 

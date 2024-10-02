@@ -2,10 +2,12 @@ import { setChatRendering, setMessages } from "@/redux/chatSlice";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const useGetAllMessages = () => {
   const dispatch = useDispatch();
   const { selectedUser } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(setChatRendering(true));
     const fetchAllMessages = async () => {
@@ -19,6 +21,9 @@ const useGetAllMessages = () => {
         }
       } catch (error) {
         console.log(error);
+        if (error.response.data.unauthorized) {
+          navigate("/login");
+        }
       } finally {
         dispatch(setChatRendering(false));
       }

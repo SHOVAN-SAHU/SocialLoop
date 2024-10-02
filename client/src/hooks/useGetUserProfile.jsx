@@ -3,9 +3,12 @@ import { setProfileRendering } from "@/redux/suggestedSlice";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const useGetUserProfile = (userId) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(setProfileRendering(true));
     const fetchUserProfile = async () => {
@@ -19,7 +22,10 @@ const useGetUserProfile = (userId) => {
           dispatch(setUserProfile(res.data.user));
         }
       } catch (error) {
-        console.log(error);
+        toast.error(error.response.data.message);
+        if (error.response.data.unauthorized) {
+          navigate("/login");
+        }
       } finally {
         dispatch(setProfileRendering(false));
       }

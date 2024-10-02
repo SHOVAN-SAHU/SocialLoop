@@ -17,7 +17,7 @@ import { Following } from "./Following";
 const Profile = () => {
   const params = useParams();
   useGetUserProfile(params._id);
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
   const { user, userProfile } = useSelector((store) => store.auth);
   const { profileRendering } = useSelector((store) => store.suggested);
   const [isOpenFollowers, setIsOpenFollowers] = useState(false);
@@ -42,6 +42,9 @@ const Profile = () => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     }
   };
 
@@ -103,6 +106,9 @@ const Profile = () => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     }
   };
 

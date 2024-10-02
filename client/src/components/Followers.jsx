@@ -31,7 +31,7 @@ export const Followers = ({ isOpen, setOpen }) => {
             ))}
           </div>
         ) : (
-          <div>No followers users</div>
+          <div>0 Followers</div>
         )}
       </DialogContent>
     </Dialog>

@@ -16,6 +16,7 @@ import { Loader2 } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { setPosts } from "@/redux/postSlice";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
   const { user } = useSelector((store) => store.auth);
@@ -27,6 +28,7 @@ const CreatePost = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [loading, setLoading] = useState(false);
   const { posts } = useSelector((store) => store.post);
+  const navigate = useNavigate();
 
   const createPostHandler = async () => {
     setLoading(true);
@@ -55,6 +57,9 @@ const CreatePost = () => {
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     } finally {
       setLoading(false);
     }

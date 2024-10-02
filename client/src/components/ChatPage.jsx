@@ -10,6 +10,7 @@ import { useState } from "react";
 import axios from "axios";
 import { setMessages } from "@/redux/chatSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const ChatPage = () => {
   const { user, selectedUser } = useSelector((store) => store.auth);
@@ -36,7 +37,10 @@ const ChatPage = () => {
         setTextMessage("");
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
+      if (error.response.data.unauthorized) {
+        navigate("/login");
+      }
     }
   };
 
