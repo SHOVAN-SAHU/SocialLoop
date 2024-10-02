@@ -1,7 +1,7 @@
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
@@ -46,7 +46,7 @@ function App() {
   }, [user, dispatch]);
 
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -92,7 +92,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 
