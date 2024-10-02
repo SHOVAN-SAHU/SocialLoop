@@ -19,9 +19,9 @@ const useGetRandomPosts = () => {
         }
       } catch (error) {
         console.log(error);
-        if (error.response.data.unauthorized) {
-          navigate("/login");
-        }
+        // if (error.response.data.unauthorized) {
+        //   navigate("/login");
+        // }
       }
     };
     fetchRendomPost();
