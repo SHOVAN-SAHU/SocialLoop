@@ -2,12 +2,13 @@ import { setAuthUser } from "@/redux/authSlice";
 import { setPosts } from "@/redux/postSlice";
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const useGetRandomPosts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user } = useSelector((store) => store.auth);
 
   useEffect(() => {
     const fetchRendomPost = async () => {
@@ -27,7 +28,7 @@ const useGetRandomPosts = () => {
         }
       }
     };
-    fetchRendomPost();
+    if (user) fetchRendomPost();
   }, []);
 };
 
