@@ -10,7 +10,7 @@ import { uploadOnCloudinary } from "../utils/uploadOnCloudinary.js";
 import { deleteFromCloudinary } from "../utils/deleteFromCloudinary.js";
 
 export const cookieOptions = {
-  httpOnly: true,
+  // httpOnly: true,
   secure: true,
   sameSite: "None",
 };
