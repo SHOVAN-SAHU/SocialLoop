@@ -1,7 +1,7 @@
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
@@ -14,63 +14,11 @@ import { setSocket } from "./redux/socketSlice";
 import { setOnlineUsers } from "./redux/chatSlice";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
-const browserRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <ProtectedRoutes>
-        <MainLayout />
-      </ProtectedRoutes>
-    ),
-    children: [
-      {
-        path: "/",
-        element: (
-          <ProtectedRoutes>
-            <Home />
-          </ProtectedRoutes>
-        ),
-      },
-      {
-        path: "/profile/:_id",
-        element: (
-          <ProtectedRoutes>
-            <Profile />
-          </ProtectedRoutes>
-        ),
-      },
-      {
-        path: "/profile/edit",
-        element: (
-          <ProtectedRoutes>
-            <EditProfile />
-          </ProtectedRoutes>
-        ),
-      },
-      {
-        path: "/chat",
-        element: (
-          <ProtectedRoutes>
-            <ChatPage />
-          </ProtectedRoutes>
-        ),
-      },
-    ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Signup />,
-  },
-]);
-
 function App() {
   const { user } = useSelector((store) => store.auth);
   const { socket } = useSelector((store) => store.socketio);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (user) {
       const socketio = io("https://socialloop-server.onrender.com/", {
@@ -83,14 +31,9 @@ function App() {
       dispatch(setSocket(socketio));
 
       //listen all the events
-
       socketio.on("getOnlineUsers", (onlineUsers) => {
         dispatch(setOnlineUsers(onlineUsers));
       });
-
-      // socketio.on("msgNotification", (notification) => {
-      //   console.log(notification);
-      // });
 
       return () => {
         socketio.close();
@@ -101,10 +44,55 @@ function App() {
       dispatch(setSocket(null));
     }
   }, [user, dispatch]);
+
   return (
-    <>
-      <RouterProvider router={browserRouter} />
-    </>
+    <HashRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoutes>
+              <MainLayout />
+            </ProtectedRoutes>
+          }
+        >
+          <Route
+            index
+            element={
+              <ProtectedRoutes>
+                <Home />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/profile/:_id"
+            element={
+              <ProtectedRoutes>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/profile/edit"
+            element={
+              <ProtectedRoutes>
+                <EditProfile />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoutes>
+                <ChatPage />
+              </ProtectedRoutes>
+            }
+          />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+      </Routes>
+    </HashRouter>
   );
 }
 
