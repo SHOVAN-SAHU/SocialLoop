@@ -11,7 +11,7 @@ import { deleteFromCloudinary } from "../utils/deleteFromCloudinary.js";
 
 export const cookieOptions = {
   // httpOnly: true,
-  secure: true,
+  // secure: true,
   sameSite: "None",
 };
 
