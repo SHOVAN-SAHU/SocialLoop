@@ -55,7 +55,7 @@ const ChatPage = () => {
     <div className="flex flex-col sm:flex-row sm:h-screen mt-[20%] sm:mt-0 sm:ml-[16%] ml-[2%]">
       <section className="w-full sm:w-1/4">
         {user?.userProfile.following.length < 1 ? (
-          <h1>Follow others to start a conversation</h1>
+          <h1>Follow eachothers to start a conversation</h1>
         ) : (
           <div className="overflow-x-auto sm:overflow-y-auto h-[9vh] sm:h-[100vh] flex sm:block">
             {user?.userProfile.following.map((user) => {
