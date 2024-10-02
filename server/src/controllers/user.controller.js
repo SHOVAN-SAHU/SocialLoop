@@ -10,8 +10,6 @@ import { uploadOnCloudinary } from "../utils/uploadOnCloudinary.js";
 import { deleteFromCloudinary } from "../utils/deleteFromCloudinary.js";
 
 export const cookieOptions = {
-  domain: ".onrender.com",
-  path: "/",
   httpOnly: true,
   secure: true,
   sameSite: "None",
