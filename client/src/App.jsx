@@ -11,10 +11,8 @@ import { io } from "socket.io-client";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSocket } from "./redux/socketSlice";
-``;
 import { setOnlineUsers } from "./redux/chatSlice";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import axios from "axios";
 
 const browserRouter = createBrowserRouter([
   {
