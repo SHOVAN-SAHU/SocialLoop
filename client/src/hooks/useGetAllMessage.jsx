@@ -1,3 +1,4 @@
+import { setAuthUser } from "@/redux/authSlice";
 import { setChatRendering, setMessages } from "@/redux/chatSlice";
 import axios from "axios";
 import React, { useEffect } from "react";
@@ -22,6 +23,7 @@ const useGetAllMessages = () => {
       } catch (error) {
         console.log(error);
         if (error.response.data.unauthorized) {
+          dispatch(setAuthUser(null));
           navigate("/login");
         }
       } finally {

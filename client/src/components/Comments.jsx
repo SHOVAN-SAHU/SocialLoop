@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { setPosts } from "@/redux/postSlice";
 import axios from "axios";
 import { Badge } from "./ui/badge";
+import { setAuthUser } from "@/redux/authSlice";
 
 const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
   const [text, setText] = useState("");
@@ -71,6 +72,7 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
       } catch (error) {
         toast.error(error.response.data.message);
         if (error.response.data.unauthorized) {
+          dispatch(setAuthUser(null));
           navigate("/login");
         }
       }
@@ -105,6 +107,7 @@ const Comments = ({ commentOpen, setCommentOpen, comments, post }) => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     }

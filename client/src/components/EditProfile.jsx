@@ -48,6 +48,7 @@ const EditProfile = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     } finally {
@@ -108,6 +109,7 @@ const EditProfile = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     } finally {

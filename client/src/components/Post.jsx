@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "@/redux/postSlice";
 import { Badge } from "./ui/badge";
 import { RiSendPlaneFill } from "react-icons/ri";
+import { setAuthUser } from "@/redux/authSlice";
 
 const Post = ({ post }) => {
   const [text, setText] = useState("");
@@ -51,6 +52,7 @@ const Post = ({ post }) => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     } finally {
@@ -89,6 +91,7 @@ const Post = ({ post }) => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     }
@@ -132,6 +135,7 @@ const Post = ({ post }) => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     }
@@ -150,6 +154,7 @@ const Post = ({ post }) => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     }

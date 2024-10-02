@@ -17,6 +17,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { setPosts } from "@/redux/postSlice";
 import { useNavigate } from "react-router-dom";
+import { setAuthUser } from "@/redux/authSlice";
 
 const CreatePost = () => {
   const { user } = useSelector((store) => store.auth);
@@ -58,6 +59,7 @@ const CreatePost = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     } finally {

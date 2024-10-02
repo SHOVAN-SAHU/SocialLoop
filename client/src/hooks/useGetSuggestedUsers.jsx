@@ -1,3 +1,4 @@
+import { setAuthUser } from "@/redux/authSlice";
 import { setSuggestedUsers } from "@/redux/suggestedSlice";
 import axios from "axios";
 import React, { useEffect } from "react";
@@ -6,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const useGetSuggestedUsers = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     const fetchSuggestedUsers = async () => {
       try {
@@ -19,6 +20,10 @@ const useGetSuggestedUsers = () => {
         }
       } catch (error) {
         console.log(error);
+        if (error.response.data.unauthorized) {
+          dispatch(setAuthUser(null));
+          navigate("/login");
+        }
       }
     };
     fetchSuggestedUsers();

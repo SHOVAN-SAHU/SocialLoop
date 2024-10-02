@@ -1,4 +1,4 @@
-import { setUserProfile } from "@/redux/authSlice";
+import { setAuthUser, setUserProfile } from "@/redux/authSlice";
 import { setProfileRendering } from "@/redux/suggestedSlice";
 import axios from "axios";
 import React, { useEffect } from "react";
@@ -24,6 +24,7 @@ const useGetUserProfile = (userId) => {
       } catch (error) {
         toast.error(error.response.data.message);
         if (error.response.data.unauthorized) {
+          dispatch(setAuthUser(null));
           navigate("/login");
         }
       } finally {

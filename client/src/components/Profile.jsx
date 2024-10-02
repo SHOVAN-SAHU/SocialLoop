@@ -43,6 +43,7 @@ const Profile = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     }
@@ -107,6 +108,7 @@ const Profile = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     }

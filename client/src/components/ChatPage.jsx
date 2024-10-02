@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { setSelectedUser } from "@/redux/authSlice";
+import { setAuthUser, setSelectedUser } from "@/redux/authSlice";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { MessageCircleCode } from "lucide-react";
@@ -39,6 +39,7 @@ const ChatPage = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       if (error.response.data.unauthorized) {
+        dispatch(setAuthUser(null));
         navigate("/login");
       }
     }
