@@ -177,7 +177,7 @@ const Profile = () => {
                 <Button
                   variant="secondary"
                   className="hover:bg-gray-200 h-8"
-                  onClick={() => naviagte("/profile/edit")}
+                  onClick={() => navigate("/profile/edit")}
                 >
                   Edit profile
                 </Button>
