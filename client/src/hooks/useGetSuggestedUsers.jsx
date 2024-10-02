@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const useGetSuggestedUsers = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchSuggestedUsers = async () => {
       try {

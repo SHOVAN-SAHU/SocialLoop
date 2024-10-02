@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const useGetRandomPosts = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchRendomPost = async () => {
       try {
@@ -19,9 +19,6 @@ const useGetRandomPosts = () => {
         }
       } catch (error) {
         console.log(error);
-        // if (error.response.data.unauthorized) {
-        //   navigate("/login");
-        // }
       }
     };
     fetchRendomPost();
