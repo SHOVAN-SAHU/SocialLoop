@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
@@ -12,6 +12,15 @@ const Messages = ({ selectedUser }) => {
   useGetAllMessages();
   const { messages, chatRendering } = useSelector((store) => store.chat);
   const { user } = useSelector((store) => store.auth);
+
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
   return (
     <div className="overflow-y-auto flex-1 p-4 ">
       <div className="flex justify-center">
@@ -56,6 +65,7 @@ const Messages = ({ selectedUser }) => {
               </div>
             );
           })}
+          <div ref={messagesEndRef} />
         </div>
       )}
     </div>
