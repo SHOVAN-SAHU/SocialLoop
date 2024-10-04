@@ -298,7 +298,7 @@ const loginUser = async (req, res) => {
       .cookie("accessToken", accessToken, {
         httpOnly: true,
         secure: true,
-        sameSite: "None",
+        sameSite: "Lax",
         domain: ".onrender.com",
         maxAge: 30 * 24 * 60 * 60 * 1000,
       })
