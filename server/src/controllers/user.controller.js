@@ -297,7 +297,7 @@ const loginUser = async (req, res) => {
     return res
       .status(201)
       .cookie("accessToken", accessToken, {
-        domain: ".onrender.com",
+        domain: "https://socialloop-by-shovan.onrender.com",
         path: "/",
         httpOnly: true,
         secure: true,
