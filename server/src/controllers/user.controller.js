@@ -9,12 +9,6 @@ import mongoose from "mongoose";
 import { uploadOnCloudinary } from "../utils/uploadOnCloudinary.js";
 import { deleteFromCloudinary } from "../utils/deleteFromCloudinary.js";
 
-export const cookieOptions = {
-  httpOnly: true,
-  secure: true,
-  sameSite: "None",
-};
-
 const registerUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -58,7 +52,13 @@ const registerUser = async (req, res) => {
 
     return res
       .status(201)
-      .cookie("accessToken", accessToken, cookieOptions)
+      .cookie("accessToken", accessToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        domain: ".onrender.com",
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      })
       .json({
         success: true,
         user: createdUser,
@@ -295,7 +295,13 @@ const loginUser = async (req, res) => {
 
     return res
       .status(201)
-      .cookie("accessToken", accessToken, cookieOptions)
+      .cookie("accessToken", accessToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        domain: ".onrender.com",
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      })
       .json({
         success: true,
         user: { userProfile: userProfile[0], userPosts },

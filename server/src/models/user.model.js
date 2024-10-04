@@ -52,7 +52,9 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 };
 
 userSchema.methods.generateAccessToken = function () {
-  return jwt.sign({ _id: this._id }, process.env.TOKEN_PRIVATE_KEY);
+  return jwt.sign({ _id: this._id }, process.env.TOKEN_PRIVATE_KEY, {
+    expiresIn: "30d",
+  });
 };
 
 export const User = mongoose.model("User", userSchema);
