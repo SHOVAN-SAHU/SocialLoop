@@ -53,10 +53,11 @@ const registerUser = async (req, res) => {
     return res
       .status(201)
       .cookie("accessToken", accessToken, {
+        domain: ".onrender.com",
+        path: "/",
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain: ".onrender.com",
         maxAge: 30 * 24 * 60 * 60 * 1000,
       })
       .json({
@@ -296,10 +297,11 @@ const loginUser = async (req, res) => {
     return res
       .status(201)
       .cookie("accessToken", accessToken, {
+        domain: ".onrender.com",
+        path: "/",
         httpOnly: true,
         secure: true,
-        sameSite: "Lax",
-        domain: ".onrender.com",
+        sameSite: "None",
         maxAge: 30 * 24 * 60 * 60 * 1000,
       })
       .json({
