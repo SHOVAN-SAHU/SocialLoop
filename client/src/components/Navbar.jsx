@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAuthUser, setUserProfile } from "@/redux/authSlice";
 import { setCreatePost } from "@/redux/createPostSlice";
 import { setMessages, setOnlineUsers } from "@/redux/chatSlice";
+import { setSuggestedUsers } from "@/redux/suggestedSlice";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
@@ -81,6 +82,7 @@ const Navbar = () => {
         dispatch(setUserProfile(null));
         dispatch(setOnlineUsers([]));
         dispatch(setMessages([]));
+        dispatch(setSuggestedUsers([]))
         navigate("/login");
         toast.success(res.data.message);
       }
@@ -92,6 +94,7 @@ const Navbar = () => {
         dispatch(setUserProfile(null));
         dispatch(setOnlineUsers([]));
         dispatch(setMessages([]));
+        dispatch(setSuggestedUsers([]))
       }
     }
   };

@@ -19,6 +19,7 @@ import { setCreatePost } from "@/redux/createPostSlice";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { setMessages, setOnlineUsers } from "@/redux/chatSlice";
+import { setSuggestedUsers } from "@/redux/suggestedSlice";
 
 const LeftSidebar = () => {
   const { user } = useSelector((store) => store.auth);
@@ -94,6 +95,7 @@ const LeftSidebar = () => {
         dispatch(setUserProfile(null));
         dispatch(setOnlineUsers([]));
         dispatch(setMessages([]));
+        dispatch(setSuggestedUsers([]));
         navigate("/login");
         toast.success(res.data.message);
       }
@@ -105,6 +107,7 @@ const LeftSidebar = () => {
         dispatch(setUserProfile(null));
         dispatch(setOnlineUsers([]));
         dispatch(setMessages([]));
+        dispatch(setSuggestedUsers([]));
       }
     }
   };
