@@ -83,6 +83,7 @@ const LeftSidebar = () => {
   };
 
   const logoutHandler = async () => {
+    console.log("logout handler hit from left sidebar");
     try {
       const res = await axios.get(
         "https://socialloop-server.onrender.com/api/v1/users/logout",

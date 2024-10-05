@@ -316,6 +316,7 @@ const loginUser = async (req, res) => {
 
 const logoutUser = async (_, res) => {
   try {
+    console.log("logout controller hit");
     return res
       .status(200)
       .clearCookie("accessToken", cookieOptions)

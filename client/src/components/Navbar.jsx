@@ -70,6 +70,7 @@ const Navbar = () => {
   };
 
   const logoutHandler = async () => {
+    console.log("logout handler hit from navbar");
     try {
       const res = await axios.get(
         "https://socialloop-server.onrender.com/api/v1/users/logout",
@@ -82,7 +83,7 @@ const Navbar = () => {
         dispatch(setUserProfile(null));
         dispatch(setOnlineUsers([]));
         dispatch(setMessages([]));
-        dispatch(setSuggestedUsers([]))
+        dispatch(setSuggestedUsers([]));
         navigate("/login");
         toast.success(res.data.message);
       }
@@ -94,7 +95,7 @@ const Navbar = () => {
         dispatch(setUserProfile(null));
         dispatch(setOnlineUsers([]));
         dispatch(setMessages([]));
-        dispatch(setSuggestedUsers([]))
+        dispatch(setSuggestedUsers([]));
       }
     }
   };
