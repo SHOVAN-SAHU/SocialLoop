@@ -8,7 +8,7 @@ const RightSidebar = () => {
   const { users } = useSelector((store) => store.suggested);
 
   const su = user?.userProfile?.following.map((u) => u._id);
-  const suggestedUsers = users.filter((u) => !su?.includes(u._id));
+  const suggestedUsers = users.filter((u) => !su?.includes(u._id) && u);
 
   return (
     <div className="hidden sm:block fixed right-0 top-0 w-fit my-10 lg:mr-20">
