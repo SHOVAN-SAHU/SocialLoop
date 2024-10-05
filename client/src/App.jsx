@@ -1,7 +1,7 @@
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if (user) {
-      const socketio = io("https://socialloop-server.onrender.com/", {
+      const socketio = io("https://socialloop-server.onrender.com", {
         query: {
           userId: user?.userProfile._id,
         },
@@ -30,7 +30,7 @@ function App() {
 
       dispatch(setSocket(socketio));
 
-      //listen all the events
+      // Listen to the "getOnlineUsers" event
       socketio.on("getOnlineUsers", (onlineUsers) => {
         dispatch(setOnlineUsers(onlineUsers));
       });
@@ -46,7 +46,7 @@ function App() {
   }, [user, dispatch]);
 
   return (
-    <HashRouter>
+    <Router>
       <Routes>
         <Route
           path="/"
@@ -92,7 +92,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
       </Routes>
-    </HashRouter>
+    </Router>
   );
 }
 
