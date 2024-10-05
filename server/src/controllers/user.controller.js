@@ -315,10 +315,14 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = async (_, res) => {
-  return res
-    .status(201)
-    .clearCookie("accessToken", cookieOptions)
-    .json({ success: true, message: "User logged out" });
+  try {
+    return res
+      .status(200)
+      .clearCookie("accessToken", cookieOptions)
+      .json({ success: true, message: "User logged out" });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getUserProfile = async (req, res) => {
