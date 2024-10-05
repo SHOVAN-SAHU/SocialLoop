@@ -316,10 +316,15 @@ const loginUser = async (req, res) => {
 
 const logoutUser = async (_, res) => {
   try {
-    console.log("logout controller hit");
     return res
       .status(200)
-      .clearCookie("accessToken", cookieOptions)
+      .clearCookie("accessToken", {
+        path: "/",
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      })
       .json({ success: true, message: "User logged out" });
   } catch (error) {
     console.log(error);
