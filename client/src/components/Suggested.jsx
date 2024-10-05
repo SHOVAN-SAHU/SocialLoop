@@ -8,7 +8,7 @@ const HorizontalScroll = () => {
   const { users } = useSelector((store) => store.suggested);
 
   const su = user?.userProfile?.following.map((u) => u._id);
-  const suggestedUsers = users.filter((u) => !su?.includes(u._id && u));
+  const suggestedUsers = users.filter((u) => !su?.includes(u._id));
 
   return (
     <div className="my-20 sm:hidden">
